@@ -24,7 +24,7 @@ function repositoryReducer(state = {}, action) {
 
 			let before = state.slice(0, index);
 			let after = state.slice(index + 1);
-			return before.concat(...state[index], {rating: action.rating}, after);
+			return before.concat(...state[index], { name: state[index].name, rating: action.rating}, after);
 		default:
 			return state;
 	}
