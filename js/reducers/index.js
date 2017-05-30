@@ -1,6 +1,6 @@
 import { ADD_REPOSITORY, RATE_REPOSITORY } from '../actions'
 
-export function respositoryReducer(state = {}, action) {
+function repositoryReducer(state = {}, action) {
 	switch (action.type) {
 		case ADD_REPOSITORY:
 			return [
@@ -28,4 +28,8 @@ export function respositoryReducer(state = {}, action) {
 		default:
 			return state;
 	}
+}
+
+export function repositoryApp(state = {}, action) {
+	return repositoryReducer(state, action);
 }
