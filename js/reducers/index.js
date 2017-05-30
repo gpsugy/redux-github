@@ -1,13 +1,15 @@
 import { ADD_REPOSITORY, RATE_REPOSITORY } from '../actions'
 
-export function respositoryReducer(state = [], action) {
+export function respositoryReducer(state = {}, action) {
 	switch (action.type) {
 		case ADD_REPOSITORY:
-			return ...state, {
-				name: action.repo,
-				rating: null
-			}
-		case RATE_REPOSITORY: {
+			return [
+					...state, {
+					name: action.repo,
+					rating: null
+				}
+			]
+		case RATE_REPOSITORY:
 			let index = -1;
 			for (let i=0; i<state.length; i++) {
 				if (state[i].name == action.repo) {
@@ -22,8 +24,7 @@ export function respositoryReducer(state = [], action) {
 
 			let before = state.slice(0, index);
 			let after = state.slice(index + 1);
-			return before.concat(...state[index], {rating: action.rating)}, after);
-		}
+			return before.concat(...state[index], {rating: action.rating}, after);
 		default:
 			return state;
 	}
