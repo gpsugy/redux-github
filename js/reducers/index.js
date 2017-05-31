@@ -1,6 +1,6 @@
 import { ADD_REPOSITORY, RATE_REPOSITORY } from '../actions'
 
-function repositoryReducer(state = {}, action) {
+function repositoryReducer(state = [], action) {
 	switch (action.type) {
 		case ADD_REPOSITORY:
 			return [
