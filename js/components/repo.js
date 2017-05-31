@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
+import StarRater from './star-rater';
 
-const Repo = ({ name }) => (
+const Repo = ({ name, rating }) => (
 	<tr>
 		<th>{name}</th>
-		<td>Stars</td>
+		<StarRater rating={rating} />
 	</tr>
-	)
+)
 
 export default Repo

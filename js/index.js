@@ -5,6 +5,7 @@ import { createStore } from 'redux'
 import { repositoryApp } from './reducers/index'
 import { addRepository, rateRepository } from './actions/index'
 import RepositoryList from './components/repository-list'
+require('../font-awesome/css/font-awesome.css');
 
 var repoList = [
 	{
