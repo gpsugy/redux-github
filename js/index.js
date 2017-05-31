@@ -1,6 +1,6 @@
 require('babel-polyfill');
 
-require('../font-awesome/css/font-awesome.css');
+// require('../font-awesome/css/font-awesome.css');
 
 import { Provider } from 'react-redux';
 import { createStore } from 'redux'
