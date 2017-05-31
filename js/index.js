@@ -2,6 +2,7 @@ require('babel-polyfill');
 
 require('../font-awesome/css/font-awesome.css');
 
+import { Provider } from 'react-redux';
 import { createStore } from 'redux'
 import { render } from 'react-dom'
 import React from 'react'
@@ -23,7 +24,25 @@ var repoList = [
 	}
 ];
 
+let store = createStore(repositoryApp);
+
 render(
-	<App repoList={repoList}/>,
+	<Provider store={store}>
+		<App repoList={repoList}/>
+	</Provider>,
   	document.getElementById('root')
 );
+
+console.log(store.getState());
+
+let unsubscribe = store.subscribe(() =>
+	console.log(store.getState())
+);
+
+// store.dispatch(addRepository('First repo'));
+// store.dispatch(addRepository('2nd repo'));
+// store.dispatch(addRepository('3rd repo'));
+// store.dispatch(rateRepository('2nd repo', 5));
+// store.dispatch(rateRepository('First repo', 2));
+
+// unsubscribe();
