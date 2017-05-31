@@ -1,11 +1,14 @@
 require('babel-polyfill');
-import React from 'react'
-import { render } from 'react-dom'
-import { createStore } from 'redux'
-import { repositoryApp } from './reducers/index'
-import { addRepository, rateRepository } from './actions/index'
-import RepositoryList from './components/repository-list'
+
 require('../font-awesome/css/font-awesome.css');
+
+import { createStore } from 'redux'
+import { render } from 'react-dom'
+import React from 'react'
+
+import { addRepository, rateRepository } from './actions/index'
+import { repositoryApp } from './reducers/index'
+import App from './components/app';
 
 var repoList = [
 	{
@@ -21,6 +24,6 @@ var repoList = [
 ];
 
 render(
-	<RepositoryList repoList={repoList}/>,
-  	document.getElementById('app')
+	<App repoList={repoList}/>,
+  	document.getElementById('root')
 );
