@@ -17,3 +17,19 @@ export function rateRepository(repo, rating) {
 		rating: rating
 	}
 }
+
+
+
+// State Model - an array of repo objects
+// {
+// 	[
+// 		{
+// 			name: '1st repo',
+// 			rating: 3
+// 		},
+// 		{
+// 			name: '2nd repo',
+// 			rating: 3
+// 		}
+// 	]
+// }
