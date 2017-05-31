@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
+import Repo from './repo';
 
 const RepositoryList = () => (
 	<div>
-		<h2>I am a repo list</h2>
+		<Repo />
 	</div>
 )
 
