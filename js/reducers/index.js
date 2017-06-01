@@ -31,5 +31,8 @@ function repositoryReducer(state = [], action) {
 }
 
 export function repositoryApp(state = {}, action) {
-	return repositoryReducer(state, action);
+	return {
+		repoList: repositoryReducer(state.repoList, action)
+	}
 }
+
