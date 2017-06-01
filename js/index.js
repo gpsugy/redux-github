@@ -30,11 +30,11 @@ render(
   	document.getElementById('root')
 );
 
-console.log(store.getState());
+// console.log(store.getState());
 
-let unsubscribe = store.subscribe(() =>
-	console.log(store.getState())
-);
+// let unsubscribe = store.subscribe(() =>
+// 	console.log(store.getState())
+// );
 
 // store.dispatch(addRepository('First repo'));
 // store.dispatch(addRepository('2nd repo'));

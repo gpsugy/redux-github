@@ -11,7 +11,6 @@ const mapStateToProps = (state, ownProps) => {
 			break;
 		}
 	}
-	// console.log(index !== -1 ? state.repoList[index].rating : null);
 	return {
 		rating: index !== -1 ? state.repoList[index].rating : null
 	}
@@ -20,7 +19,6 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
 		handleClick: (rating) => {
-			// console.log('handleClick clicked with rating: ' + rating)
 			dispatch(rateRepository(ownProps.name, rating))
 		}
 	}

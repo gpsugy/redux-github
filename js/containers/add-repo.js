@@ -15,10 +15,11 @@ class AddRepo extends React.Component {
 		e.preventDefault();
 
 		if (!this.textInput.value.trim()) {
-			return
+			return;
 		}
 
 		this.props.dispatch(addRepository(this.textInput.value));
+		this.textInput.value = '';
 	}	
 
 	render() {
