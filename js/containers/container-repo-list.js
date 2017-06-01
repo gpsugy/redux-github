@@ -4,7 +4,7 @@ import RepositoryList from '../components/repository-list';
 
 const mapStateToProps = (state) => {
 	return {
-		repoList: state
+		repoList: state.repoList
 	}
 }
 

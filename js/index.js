@@ -1,11 +1,12 @@
 require('babel-polyfill');
 
+import { Provider } from 'react-redux';
 import { createStore } from 'redux'
 import { render } from 'react-dom'
 import React from 'react'
 
-import { addRepository, rateRepository } from './actions/index'
 import { repositoryApp } from './reducers/index'
+import App from './components/app';
 
 var repoList = [
 	{
@@ -23,7 +24,9 @@ var repoList = [
 let store = createStore(repositoryApp);
 
 render(
-	<h1>HI</h1>,
+	<Provider store={store}>
+		<App />
+	</Provider>,
   	document.getElementById('root')
 );
 
@@ -33,10 +36,10 @@ let unsubscribe = store.subscribe(() =>
 	console.log(store.getState())
 );
 
-store.dispatch(addRepository('First repo'));
-store.dispatch(addRepository('2nd repo'));
-store.dispatch(addRepository('3rd repo'));
-store.dispatch(rateRepository('2nd repo', 5));
-store.dispatch(rateRepository('First repo', 2));
+// store.dispatch(addRepository('First repo'));
+// store.dispatch(addRepository('2nd repo'));
+// store.dispatch(addRepository('3rd repo'));
+// store.dispatch(rateRepository('2nd repo', 5));
+// store.dispatch(rateRepository('First repo', 2));
 
-unsubscribe();
+// unsubscribe();
