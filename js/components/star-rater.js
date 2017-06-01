@@ -1,6 +1,6 @@
 import React from 'react';
 
-function renderStars(rating) {
+function renderStars(rating, handleClick) {
 	let stars = [];
 	for (let i=0; i<5; i++) {
 		(i < rating - 1) ? stars.push(<i key={i} className="fa fa-star"></i>)
@@ -9,9 +9,9 @@ function renderStars(rating) {
 	return stars;
 }
 
-const StarRater = ({ rating }) => (
+const StarRater = ({ rating, handleClick }) => (
 	<td>
-		{renderStars(rating)}
+		{renderStars(rating, handleClick)}
 	</td>
 )
 
