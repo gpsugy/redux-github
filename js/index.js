@@ -28,7 +28,7 @@ let store = createStore(repositoryApp);
 
 render(
 	<Provider store={store}>
-		<App repoList={repoList}/>
+		<App />
 	</Provider>,
   	document.getElementById('root')
 );

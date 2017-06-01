@@ -1,11 +1,11 @@
 import React from 'react';
 
 import AddRepo from '../containers/add-repo';
-import RepositoryList from './repository-list';
+import ContainerRepoList from '../containers/container-repo-list';
 
 const App = ({ repoList }) => (
 	<div>
-		<RepositoryList repoList={repoList}/>
+		<ContainerRepoList />
 		<AddRepo />
 	</div>
 )
