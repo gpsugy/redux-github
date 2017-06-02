@@ -36,6 +36,23 @@ export function fetchDescriptionError(repo, error) {
 	}
 }
 
+export function fetchDescription(repo) {
+	return function(dispatch) {
+		let url = 'https://api.github.com/repos/' + repo;
+		return fetch(url)
+			.then(response => {
+				if (response.status < 200 || response.status >= 300) {
+					let error = new Error(response.statusText);
+					error.response = response;
+					throw error;
+				}
+				return response;
+			}).then(response => response.json())
+			.then(json => dispatch(fetchDescriptionSuccess(repo, json.description)))
+			.catch(error => dispatch(fetchDescriptionError(repo, error)))
+	}
+}
+
 // Store State Model - an array of repo objects
 // {
 // 	[

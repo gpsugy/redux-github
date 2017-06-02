@@ -1,6 +1,11 @@
-import { ADD_REPOSITORY, RATE_REPOSITORY } from '../actions'
+import {
+  ADD_REPOSITORY,
+  FETCH_DESCRIPTION_ERROR,
+  FETCH_DESCRIPTION_SUCCESS,
+  RATE_REPOSITORY,
+} from '../actions';
 
-function findIndex(state, name) {
+function findIndexOfRepo(state, name) {
 	let index = -1;
 	for (let i=0; i<state.length; i++) {
 		if (state[i].name == name) {
@@ -10,7 +15,7 @@ function findIndex(state, name) {
 	}
 
 	if (index === -1) {
-		throw new Error('Could not find repository to rate');
+		throw new Error('Could not find repository');
 	}
 
 	return index;
@@ -25,6 +30,7 @@ function insertIntoState(state, index, attribute, val) {
 }
 
 function repositoryReducer(state = [], action) {
+	let index;
 	switch (action.type) {
 		case ADD_REPOSITORY:
 			return [
@@ -35,9 +41,17 @@ function repositoryReducer(state = [], action) {
 				}
 			]
 		case RATE_REPOSITORY:
-			let index = findIndex(state, action.repo);
+			index = findIndexOfRepo(state, action.repo);
 
 			return insertIntoState(state, index, 'rating', action.rating);
+		case FETCH_DESCRIPTION_SUCCESS:
+			index = findIndexOfRepo(state, action.repo);
+
+			return insertIntoState(state, index, 'description', action.description);
+		case FETCH_DESCRIPTION_ERROR:
+			index = findIndexOfRepo(state, action.repo);
+
+			return insertIntoState(state, index, 'description', 'N/A');
 		default:
 			return state;
 	}
