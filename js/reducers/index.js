@@ -16,6 +16,14 @@ function findIndex(state, name) {
 	return index;
 }
 
+function insertIntoState(state, index, attribute, val) {
+	let before = state.slice(0, index);
+	let after = state.slice(index + 1);
+	return before.concat(...state[index]
+		, { id: index, name: state[index].name, [attribute]: val }
+		, after);
+}
+
 function repositoryReducer(state = [], action) {
 	switch (action.type) {
 		case ADD_REPOSITORY:
@@ -29,11 +37,7 @@ function repositoryReducer(state = [], action) {
 		case RATE_REPOSITORY:
 			let index = findIndex(state, action.repo);
 
-			let before = state.slice(0, index);
-			let after = state.slice(index + 1);
-			return before.concat(...state[index]
-				, { id: index, name: state[index].name, rating: action.rating }
-				, after);
+			return insertIntoState(state, index, 'rating', action.rating);
 		default:
 			return state;
 	}
