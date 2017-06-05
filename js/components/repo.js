@@ -24,7 +24,7 @@ class Repo extends React.Component {
 		return (
 			<tr>
 				<th>{this.props.name}</th>
-				<td>{this.description}</td>
+				<td>{this.props.description}</td>
 				<td>{this.renderStars(this.props.rating, this.props.handleClick)}</td>
 			</tr>
 		)

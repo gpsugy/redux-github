@@ -11,6 +11,7 @@ const mapStateToProps = (state, ownProps) => {
 			break;
 		}
 	}
+
 	return {
 		rating: index !== -1 ? state.repoList[index].rating : null,
 		description: index !== -1 ? state.repoList[index].description : null

@@ -25,7 +25,7 @@ function insertIntoState(state, index, attribute, val) {
 	let before = state.slice(0, index);
 	let after = state.slice(index + 1);
 	return before.concat(...state[index]
-		, { id: index, name: state[index].name, [attribute]: val }
+		, { id: index, name: state[index].name, description: state[index].description, [attribute]: val }
 		, after);
 }
 

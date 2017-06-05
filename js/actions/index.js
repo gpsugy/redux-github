@@ -40,14 +40,8 @@ export function fetchDescriptionError(repo, error) {
 
 export function fetchDescription(repo) {
 	return function(dispatch) {
-		let options = {
-			url: 'https://api.github.com/repos/' + repo,
-			headers: {
-				'User-Agent': 'request'
-			}
-		};
-		console.log(options.url);
-		return fetch(options)
+		let url = 'https://api.github.com/repos/' + repo;
+		return fetch(url)
 			.then(response => {
 				if (response.status < 200 || response.status >= 300) {
 					let error = new Error(response.statusText);
