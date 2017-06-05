@@ -1,7 +1,9 @@
 require('babel-polyfill');
 
+import thunkMiddleware from 'redux-thunk';
+import { createLogger } from 'redux-logger';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux'
+import { applyMiddleware, createStore } from 'redux';
 import { render } from 'react-dom'
 import React from 'react'
 
@@ -21,7 +23,15 @@ var repoList = [
 	}
 ];
 
-let store = createStore(repositoryApp);
+const loggerMiddleware = createLogger();
+
+const store = createStore(
+	repositoryApp,
+	applyMiddleware(
+		thunkMiddleware,
+		loggerMiddleware
+	)
+);
 
 render(
 	<Provider store={store}>

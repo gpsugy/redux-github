@@ -23,7 +23,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 			dispatch(rateRepository(ownProps.name, rating))
 		},
 		fetchDescription: () => {
-			dispatch(fetchDescription(ownProps.name))
+			dispatch(fetchDescription(ownProps.name));
 		}
 	}
 }
