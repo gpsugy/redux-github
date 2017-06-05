@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
-import { rateRepository } from '../actions';
-import StarRater from '../components/star-rater';
+import { fetchDescription, rateRepository } from '../actions';
+import Repo from '../components/repo';
 
 const mapStateToProps = (state, ownProps) => {
 	let index = -1;
@@ -12,7 +12,8 @@ const mapStateToProps = (state, ownProps) => {
 		}
 	}
 	return {
-		rating: index !== -1 ? state.repoList[index].rating : null
+		rating: index !== -1 ? state.repoList[index].rating : null,
+		description: index !== -1 ? state.repoList[index].description : null
 	}
 }
 
@@ -20,13 +21,16 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
 		handleClick: (rating) => {
 			dispatch(rateRepository(ownProps.name, rating))
+		},
+		fetchDescription: () => {
+			dispatch(fetchDescription(ownProps.name))
 		}
 	}
 }
 
-const ContainerStarRater = connect(
+const ContainerRepo = connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(StarRater)
+)(Repo)
 
-export default ContainerStarRater
+export default ContainerRepo

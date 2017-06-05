@@ -1,11 +1,12 @@
 import React from 'react';
-import Repo from './repo';
+
+import ContainerRepo from '../containers/container-repo';
 
 const RepositoryList = ({ repoList }) => (
 	<table>
 		<tbody>
 			{repoList.map(repo =>
-				<Repo key={repo.id} name={repo.name} rating={repo.rating} />
+				<ContainerRepo key={repo.id} name={repo.name} rating={repo.rating} />
 			)}
 		</tbody>
 	</table>
